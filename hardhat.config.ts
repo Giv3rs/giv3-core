@@ -7,7 +7,6 @@ import "@typechain/hardhat";
 import "solidity-coverage";
 import "dotenv/config";
 
-
 import { task } from "hardhat/config";
 
 let ethers = require("ethers");
@@ -56,11 +55,6 @@ module.exports = {
       accounts: [PRIVATE_KEY],
     },
     hardhat: {
-      // TODO: Add snapshot block
-      // forking: {
-      //   url: process.env.ALCHEMY_PROVIDER_MAINNET,
-      //   block: 0,
-      // },
       mining: {
         auto: true,
       },
@@ -76,30 +70,6 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       saveDeployments: true,
     },
-    optimism_mainnet: {
-      url: "https://mainnet.optimism.io",
-      chainId: 10,
-      accounts: [PRIVATE_KEY],
-      saveDeployments: true,
-    },
-    optimism_testnet: {
-      url: "https://kovan.optimism.io",
-      chainId: 69,
-      accounts: [PRIVATE_KEY],
-      saveDeployments: true,
-    },
-    arbitrum_mainnet: {
-      url: "https://arb1.arbitrum.io/rpc",
-      chainId: 42161,
-      accounts: [PRIVATE_KEY],
-      saveDeployments: true,
-    },
-    arbitrum_testnet: {
-      url: "https://rinkeby.arbitrum.io/rpc",
-      chainId: 421611,
-      accounts: [PRIVATE_KEY],
-      saveDeployments: true,
-    },
   },
   solidity: {
     compilers: [
@@ -111,24 +81,10 @@ module.exports = {
           },
         },
       },
-      {
-        version: "0.7.6",
-        settings: {
-          optimizer: {
-            enabled: true,
-          },
-        },
-      },
     ],
-  },
-  namedAccounts: {
-    deployer: {
-      default: 0, // here this will by default take the first account as deployer
-    },
   },
   etherscan: {
     apiKey: {
-      optimisticKovan: process.env.OPTISCAN_API_KEY,
       polygonMumbai: process.env.ETHERSCAN_API_KEY,
     },
   },
